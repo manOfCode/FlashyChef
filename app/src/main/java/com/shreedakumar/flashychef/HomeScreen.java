@@ -49,13 +49,15 @@ public class HomeScreen extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        final CardView card = findViewById(R.id.message_card);
+        card.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mTextMessage.setText(getBreakfastRecommendation());            }
+        });
         final Button button = findViewById(R.id.what_to_do_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
-                int optionSize = options.size();
-                int randomPosition = ThreadLocalRandom.current().nextInt(0, optionSize);
-                mTextMessage.setText(options.get(randomPosition));
+                mTextMessage.setText(getBreakfastRecommendation());
             }
         });
 
@@ -96,5 +98,12 @@ public class HomeScreen extends AppCompatActivity {
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onRestoreInstanceState(savedInstanceState, persistentState);
         Log.i("Shreeda","onRestoreInstanceState complete");
+    }
+
+    public String getBreakfastRecommendation() {
+        List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        int optionSize = options.size();
+        int randomPosition = ThreadLocalRandom.current().nextInt(0, optionSize);
+        return options.get(randomPosition);
     }
 }
