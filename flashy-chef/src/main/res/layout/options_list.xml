@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/option_name"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:text="@string/hellow_manage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="viewStart" android:textStyle="bold" tools:showIn="@layout/activity_manage_screen"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" android:scrollbars="vertical"
+        android:layout_margin="15dp" android:textAllCaps="false" android:scrollHorizontally="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false" android:scrollbarAlwaysDrawVerticalTrack="false"/>

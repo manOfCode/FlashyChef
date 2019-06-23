@@ -6,12 +6,13 @@ import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import com.shreedakumar.flashychef.utils.ManageOptionsAdapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +20,10 @@ import java.util.List;
 public class ManageScreen extends AppCompatActivity {
 
     private TextView mTextMessage;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private LinearLayoutManager layoutManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,8 +51,21 @@ public class ManageScreen extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        /*List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        mTextMessage.setText(TextUtils.join("\n", options));*/
+
         List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
-        mTextMessage.setText(TextUtils.join("\n", options));
+        recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        // specify an adapter (see also next example)
+        mAdapter = new ManageOptionsAdapter(options);
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
