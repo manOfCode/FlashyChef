@@ -49,10 +49,10 @@ public class ManageScreen extends AppCompatActivity {
         setContentView(R.layout.activity_manage_screen);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manage_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        /*List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
-        mTextMessage.setText(TextUtils.join("\n", options));*/
+        // Ugly workaround to make the selection stick for ManageScreen
+        navigation.getMenu().getItem(1).setChecked(true);
 
         List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
         recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
@@ -71,36 +71,36 @@ public class ManageScreen extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("Shreeda","onStart complete");
+        Log.i("Shreeda","ManageScreen onStart complete");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("Shreeda","onStop complete");
+        Log.i("Shreeda","ManageScreen onStop complete");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("Shreeda","onDestroy complete");
+        Log.i("Shreeda","ManageScreen onDestroy complete");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("Shreeda","onResume complete");
+        Log.i("Shreeda","ManageScreen onResume complete");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        Log.i("Shreeda","onSaveInstanceState complete");
+        Log.i("Shreeda","ManageScreen onSaveInstanceState complete");
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onRestoreInstanceState(savedInstanceState, persistentState);
-        Log.i("Shreeda","onRestoreInstanceState complete");
+        Log.i("Shreeda","ManageScreen onRestoreInstanceState complete");
     }
 }

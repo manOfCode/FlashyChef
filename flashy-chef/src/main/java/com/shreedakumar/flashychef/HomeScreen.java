@@ -46,7 +46,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.home_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         final CardView card = findViewById(R.id.message_card);
@@ -61,43 +61,43 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Log.i("Shreeda","onCreate complete");
+        Log.i("Shreeda","HomeScreen onCreate complete");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("Shreeda","onStart complete");
+        Log.i("Shreeda","HomeScreen onStart complete");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("Shreeda","onStop complete");
+        Log.i("Shreeda","HomeScreen onStop complete");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("Shreeda","onDestroy complete");
+        Log.i("Shreeda","HomeScreen onDestroy complete");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("Shreeda","onResume complete");
+        Log.i("Shreeda","HomeScreen onResume complete");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        Log.i("Shreeda","onSaveInstanceState complete");
+        Log.i("Shreeda","HomeScreen onSaveInstanceState complete");
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onRestoreInstanceState(savedInstanceState, persistentState);
-        Log.i("Shreeda","onRestoreInstanceState complete");
+        Log.i("Shreeda","HomeScreen onRestoreInstanceState complete");
     }
 
     public String getBreakfastRecommendation() {
