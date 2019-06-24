@@ -1,4 +1,4 @@
-package com.shreedakumar.flashychef;
+package com.shreedakumar.flashychef.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import com.shreedakumar.flashychef.R;
 import com.shreedakumar.flashychef.utils.ManageOptionsAdapter;
 
 import java.util.Arrays;

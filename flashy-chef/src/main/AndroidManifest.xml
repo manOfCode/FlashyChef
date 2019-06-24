@@ -9,13 +9,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ManageScreen">
+        <activity android:name=".activities.ManageScreen">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
-                android:name=".HomeScreen"
+                android:name=".activities.HomeScreen"
                 android:label="@string/title_activity_home_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

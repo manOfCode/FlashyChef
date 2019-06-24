@@ -1,4 +1,4 @@
-package com.shreedakumar.flashychef;
+package com.shreedakumar.flashychef.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
+import com.shreedakumar.flashychef.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
