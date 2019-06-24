@@ -3,11 +3,11 @@ package com.shreedakumar.flashychef.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -18,12 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ManageScreen extends AppCompatActivity {
-
-    private TextView mTextMessage;
-
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private LinearLayoutManager layoutManager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,23 +42,23 @@ public class ManageScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_screen);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+        TextView mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manage_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         // Ugly workaround to make the selection stick for ManageScreen
         navigation.getMenu().getItem(1).setChecked(true);
 
         List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
-        recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         // specify an adapter (see also next example)
-        mAdapter = new ManageOptionsAdapter(options);
+        RecyclerView.Adapter mAdapter = new ManageOptionsAdapter(options);
         recyclerView.setAdapter(mAdapter);
     }
 
