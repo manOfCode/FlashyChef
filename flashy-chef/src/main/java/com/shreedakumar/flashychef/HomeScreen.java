@@ -46,6 +46,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         mTextMessage = (TextView) findViewById(R.id.message);
+        mTextMessage.setText(getBreakfastRecommendation());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.home_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

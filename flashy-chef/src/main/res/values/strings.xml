@@ -5,6 +5,7 @@
     <string name="title_manage">Manage</string>
     <string name="title_notifications">Notifications</string>
     <string name="hellow">I will show your options!!</string>
+    <string name="how_about">How about...</string>
     <string name="hellow_manage">I will let you manage options here!!</string>
     <string name="what_to_do_button">What to do?</string>
     <string-array name="breakfasts">

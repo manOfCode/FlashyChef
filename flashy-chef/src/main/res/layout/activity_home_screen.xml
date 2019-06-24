@@ -18,6 +18,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:itemTextColor="@color/bottom_nav_color"
+            app:itemIconTint="@color/bottom_nav_color"
             app:itemTextAppearanceActive="@color/colorPrimaryDark"
             app:itemTextAppearanceInactive="@android:color/darker_gray"
             app:menu="@menu/navigation"/>
@@ -52,5 +54,12 @@
                     android:layout_marginStart="0dp" android:textSize="30sp"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
+    <TextView
+            android:text="@string/how_about"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/how_about" android:visibility="visible" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/message_card" android:textAlignment="center"/>
 
 </android.support.constraint.ConstraintLayout>
