@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Option {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int uid;
 
     @ColumnInfo(name = "option_name")
@@ -17,4 +17,10 @@ public class Option {
 
     @ColumnInfo(name = "category")
     public String category;
+
+    public Option(String optionName, String category, String cuisine) {
+        this.optionName = optionName;
+        this.category = category;
+        this.cuisine = cuisine;
+    }
 }

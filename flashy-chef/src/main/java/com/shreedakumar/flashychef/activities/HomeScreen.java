@@ -13,7 +13,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
 import com.shreedakumar.flashychef.R;
+import com.shreedakumar.flashychef.db.FlashyDB;
+import com.shreedakumar.flashychef.db.model.Option;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,20 +48,22 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        final List<Option> optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+
         mTextMessage = (TextView) findViewById(R.id.message);
-        mTextMessage.setText(getBreakfastRecommendation());
+        mTextMessage.setText(getBreakfastRecommendation(optionList));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.home_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         final CardView card = findViewById(R.id.message_card);
         card.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mTextMessage.setText(getBreakfastRecommendation());            }
+                mTextMessage.setText(getBreakfastRecommendation(optionList));            }
         });
         final Button button = findViewById(R.id.what_to_do_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mTextMessage.setText(getBreakfastRecommendation());
+                mTextMessage.setText(getBreakfastRecommendation(optionList));
             }
         });
 
@@ -101,9 +106,19 @@ public class HomeScreen extends AppCompatActivity {
         Log.i("Shreeda","HomeScreen onRestoreInstanceState complete");
     }
 
-    public String getBreakfastRecommendation() {
-        List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+    public String getBreakfastRecommendation(List<Option> optionList) {
+        //Set<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        if (optionList == null || optionList.size() == 0) {
+            optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+        }
+        List<String> options = new ArrayList<String>();
+        for (Option option : optionList) {
+            options.add(option.optionName);
+        }
         int optionSize = options.size();
+        if (optionSize == 0) {
+            return "Tap here!";
+        }
         int randomPosition = ThreadLocalRandom.current().nextInt(0, optionSize);
         return options.get(randomPosition);
     }

@@ -12,10 +12,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.shreedakumar.flashychef.R;
+import com.shreedakumar.flashychef.db.FlashyDB;
+import com.shreedakumar.flashychef.db.model.Option;
 import com.shreedakumar.flashychef.utils.ManageOptionsAdapter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class ManageScreen extends AppCompatActivity {
 
@@ -42,24 +46,28 @@ public class ManageScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_screen);
 
+        List<Option> optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+        List<String> options = new ArrayList<String>();
+        for (Option option : optionList) {
+            options.add(option.optionName);
+        }
+
+
         TextView mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manage_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         // Ugly workaround to make the selection stick for ManageScreen
         navigation.getMenu().getItem(1).setChecked(true);
 
-        List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        //List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        // specify an adapter (see also next example)
         RecyclerView.Adapter mAdapter = new ManageOptionsAdapter(options);
         recyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
