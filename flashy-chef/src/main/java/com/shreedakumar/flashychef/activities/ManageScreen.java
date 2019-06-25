@@ -21,6 +21,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+/*
+TODO CRUD operations (LiveData/ViewModel)
+https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#8
+ */
 public class ManageScreen extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -48,7 +52,7 @@ public class ManageScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_screen);
 
-        List<Option> optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+        List<Option> optionList = FlashyDB.getInstance().OptionDao().getAll();
         List<String> options = new ArrayList<String>();
         for (Option option : optionList) {
             options.add(option.optionName);

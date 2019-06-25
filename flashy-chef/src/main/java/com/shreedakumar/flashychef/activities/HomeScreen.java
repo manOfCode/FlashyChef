@@ -50,7 +50,7 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        final List<Option> optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+        final List<Option> optionList = FlashyDB.getInstance().OptionDao().getAll();
 
         mTextMessage = (TextView) findViewById(R.id.message);
         mTextMessage.setText(getBreakfastRecommendation(optionList));
@@ -111,7 +111,7 @@ public class HomeScreen extends AppCompatActivity {
     public String getBreakfastRecommendation(List<Option> optionList) {
         //First run will get an empty list. Hence, refresh it from DB
         if (optionList == null || optionList.size() == 0) {
-            optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
+            optionList = FlashyDB.getInstance().OptionDao().getAll();
         }
         List<String> options = new ArrayList<String>();
         for (Option option : optionList) {

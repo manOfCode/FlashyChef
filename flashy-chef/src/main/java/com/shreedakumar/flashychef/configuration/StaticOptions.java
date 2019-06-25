@@ -3,6 +3,7 @@ package com.shreedakumar.flashychef.configuration;
 import androidx.appcompat.app.AppCompatActivity;
 import com.shreedakumar.flashychef.R;
 import com.shreedakumar.flashychef.db.model.Option;
+import com.shreedakumar.flashychef.utils.ContextProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +13,8 @@ public class StaticOptions {
 
     public static final List<Option> optionList = new ArrayList<Option>();
 
-    public StaticOptions(AppCompatActivity activity) {
-        for (String breakfastName : Arrays.asList(activity.getResources().getStringArray(R.array.breakfasts))) {
+    public StaticOptions() {
+        for (String breakfastName : Arrays.asList(ContextProvider.getContext().getResources().getStringArray(R.array.breakfasts))) {
             optionList.add( new Option(breakfastName, "Breakfast", "Indian"));
         }
     }

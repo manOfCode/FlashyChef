@@ -30,4 +30,7 @@ public interface OptionDao {
 
         @Delete
         void delete(Option option);
+
+        @Query("DELETE FROM option WHERE option_name = :option")
+        void deleteOptionByName(String option);
 }
