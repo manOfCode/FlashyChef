@@ -36,7 +36,9 @@ public class HomeScreen extends AppCompatActivity {
                     return true;
                 case R.id.navigation_manage:
                     Intent intent = new Intent(HomeScreen.this, ManageScreen.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
+                    overridePendingTransition(0,0);
                     return true;
             }
             return false;
@@ -107,7 +109,7 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public String getBreakfastRecommendation(List<Option> optionList) {
-        //Set<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        //First run will get an empty list. Hence, refresh it from DB
         if (optionList == null || optionList.size() == 0) {
             optionList = FlashyDB.getInstance(getApplicationContext(), this).OptionDao().getAll();
         }

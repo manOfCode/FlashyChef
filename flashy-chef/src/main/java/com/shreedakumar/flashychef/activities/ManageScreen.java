@@ -32,7 +32,9 @@ public class ManageScreen extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Intent intent = new Intent(ManageScreen.this, HomeScreen.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
+                    overridePendingTransition(0,0);
                     return true;
                 case R.id.navigation_manage:
                     return true;
@@ -52,14 +54,13 @@ public class ManageScreen extends AppCompatActivity {
             options.add(option.optionName);
         }
 
-
         TextView mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.manage_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         // Ugly workaround to make the selection stick for ManageScreen
         navigation.getMenu().getItem(1).setChecked(true);
 
-        //List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts));
+        //List<String> options = Arrays.asList(getResources().getStringArray(R.array.breakfasts)); //Old method
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.options_recycle);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
